@@ -21,11 +21,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'AceEngineer@2020'
 api = Api(app)
 
-# Utilize Flask to create libraries. Runs before it commits the first request.
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
 # jwt creates a new end point "/auth"
 jwt = JWT(app, authenticate, identity)
 
