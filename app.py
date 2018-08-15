@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -15,7 +17,7 @@ from resources.store import StoreList
 #  __name__ gives each file a unique name
 app = Flask(__name__)
 # Make a URI
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 # Turn off default Flask tracking. SQLAlchmey has its own active tracking system
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'AceEngineer@2020'
